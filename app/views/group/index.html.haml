@@ -12,10 +12,10 @@
         .chat-side-bar__header__contents
           .chat-side-bar__header__contents__name takao toriyama
           %li.chat-side-bar__header__contents__new-group
-            = link_to "/group/new" do
+            = link_to new_group_path do
               %i.fa.fa-pencil-square-o.icon
           %li.chat-side-bar__header__contents__edit
-            = link_to "/users/edit" do
+            = link_to edit_user_registration_path do
               %i.fa.fa-cog.icon
       .chat-side-bar__groups
         .chat-side-bar__groups-lists
@@ -25,7 +25,8 @@
       .chat-main__header
         .chat-main__header__group.clearfix
           .chat-main__header__group-name Test
-          %a.chat-main__header__group-edit{:href => "/groups/4392/edit"} edit
+          .chat-main__header__group-edit
+            = link_to 'edit', edit_group_path(Group.first)
         .chat-main__header__members
           %li.member Member: Toriyama Takao
       .chat-main__body
@@ -36,11 +37,11 @@
             .chat-main__body__messages__1-body hoge
       .chat-main__footer
         %form#new_message.chat-main__footer-form
-          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-          %input{:name => "authenticity_token", :type => "hidden", :value => "P6CIHc51pIrfwCn8ZlizaLL+7+4t6EQx3q3aDIGfMN9rtSC47VH8kJZJEVnHJPMUgjuBWewie17QFo/UtKEAyg=="}/
+          %input{name: "utf8", type: "hidden", value: "✓"}/
+          %input{name: "authenticity_token", type: "hidden", value: "P6CIHc51pIrfwCn8ZlizaLL+7+4t6EQx3q3aDIGfMN9rtSC47VH8kJZJEVnHJPMUgjuBWewie17QFo/UtKEAyg=="}/
           .chat-main__footer-body
-            %input#message_body.message{:name => "message[body]", :placeholder => "type a message", :type => "text"}/
-            %label.chat-file{:for => "message_image"}
-              %input#message_image.image{:name => "message[image]", :type => "file"}/
+            %input#message_body.message{name: "message[body]", placeholder: "type a message", type: "text"}/
+            %label.chat-file{for: "message_image"}
+              %input#message_image.image{name: "message[image]", type: "file"}/
               %i.fa.fa-image
-            %input.submit{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
+            %input.submit{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
