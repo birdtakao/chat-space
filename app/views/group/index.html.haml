@@ -15,7 +15,7 @@
             = link_to new_group_path do
               %i.fa.fa-pencil-square-o.icon
           %li.chat-side-bar__header__contents__edit
-            = link_to edit_user_registration_path do
+            = link_to edit_user_path(current_user) do
               %i.fa.fa-cog.icon
       .chat-side-bar__groups
         .chat-side-bar__groups-lists
