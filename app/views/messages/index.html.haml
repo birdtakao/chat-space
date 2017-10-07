@@ -1,6 +1,11 @@
 !!!
 %html
 %body
+  .notification
+    .notice
+      = render 'layouts/flash'
+      = yield
+
   .chat
     .chat-side-bar
       .chat-side-bar__header
