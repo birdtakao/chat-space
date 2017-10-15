@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to root_path, notice: 'グループを作成しました'
     else
-      render new_group_path
+      render new_group_path, notice: 'グループを作成に失敗しました'
     end
   end
 
