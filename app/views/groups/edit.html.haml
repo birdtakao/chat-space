@@ -34,6 +34,6 @@
       .chat-group-form__field--right
         / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
         .check_box
-        .f.collection_check_boxes(:user_id, User.all, :id, :name) do |b|
-          .b.label { b.check_box + b.text }
+          = collection_check_boxes(:group, :user_ids, User.all, :id, :name) do |b|
+            = b.label { b.check_box + b.text }
         = f.submit "Save", name: "commit", class: "chat-group-form__action-btn"
