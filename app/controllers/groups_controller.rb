@@ -11,16 +11,30 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to root_path, notice: 'グループを作成しました'
     else
-      render new_group_path
+      render new_group_path, alert: 'グループ作成に失敗しました'
     end
   end
 
   def edit
-    @group = Group.new
+    @group = Group.find(1)
+  end
+
+  def update
+    @group = Group.find(1)
+    if @group.update(group_params)
+      redirect_to root_path, notice: 'グループが編集されました'
+    else
+      render edit_group_path
+    end
   end
 
   private
   def group_params
     params.require(:group).permit(:name, {user_ids: []})
+  end
+
+  private
+  def find_group
+
   end
 end
