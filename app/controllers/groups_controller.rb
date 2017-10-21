@@ -1,11 +1,14 @@
 class GroupsController < ApplicationController
   before_action :find_group, only: [:edit, :update]
-  
+
   def index
+    @message = Message.new
+    @group = Group.find(1)
   end
 
   def new
     @group = Group.new
+    @message = Message.new
   end
 
   def create
