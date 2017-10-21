@@ -8,7 +8,6 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    @message = Message.new
   end
 
   def create
