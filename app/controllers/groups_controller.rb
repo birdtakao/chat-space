@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :find_group, only: [:edit, :update]
+  
   def index
   end
 
@@ -11,16 +13,14 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to root_path, notice: 'グループを作成しました'
     else
-      render new_group_path, alert: 'グループ作成に失敗しました'
+      render :new, alert: 'グループ作成に失敗しました'
     end
   end
 
   def edit
-    @group = Group.find(1)
   end
 
   def update
-    @group = Group.find(1)
     if @group.update(group_params)
       redirect_to root_path, notice: 'グループが編集されました'
     else
@@ -35,6 +35,6 @@ class GroupsController < ApplicationController
 
   private
   def find_group
-
+    @group = Group.find(params[:id])
   end
 end
