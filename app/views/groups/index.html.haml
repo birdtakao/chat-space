@@ -30,7 +30,7 @@
         .chat-main__header__group.clearfix
           .chat-main__header__group-name Test
           .chat-main__header__group-edit
-            = link_to 'edit', edit_group_path(Group.first)
+            = link_to 'Edit', edit_group_path(Group.first)
         .chat-main__header__members
           %li.member Member: Toriyama Takao
       .chat-main__body
@@ -40,12 +40,11 @@
             .chat-main__body__messages__1-time 2017/09/05 20:52:52
             .chat-main__body__messages__1-body hoge
       .chat-main__footer
-        %form#new_message.chat-main__footer-form
-          %input{name: "utf8", type: "hidden", value: "✓"}/
-          %input{name: "authenticity_token", type: "hidden", value: "P6CIHc51pIrfwCn8ZlizaLL+7+4t6EQx3q3aDIGfMN9rtSC47VH8kJZJEVnHJPMUgjuBWewie17QFo/UtKEAyg=="}/
-          .chat-main__footer-body
-            %input#message_body.message{name: "message[body]", placeholder: "type a message", type: "text"}/
-            %label.chat-file{for: "message_image"}
-              %input#message_image.image{name: "message[image]", type: "file"}/
-              %i.fa.fa-image
-            %input.submit{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
+        .chat-main__footer-form
+        = form_for [@group, @message] do |f|
+        .chat-main__footer-body
+          = f.text_field :text, class: "message", placeholder:"type a message"
+          %label.chat-file
+            = f.file_field :image, class: 'image'
+            %i.fa.fa-picture-o
+          = f.submit "Send", class: 'submit'
