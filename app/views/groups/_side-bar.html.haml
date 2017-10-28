@@ -17,11 +17,4 @@
               .chat-side-bar__group-name
                 = group.name
                 .chat-side-bar__group-message
-                  - if group.messages.blank?
-                    まだメッセージはありません。
-                  - else
-                    - latest = group.messages.order("created_at DESC")[0]
-                    - if latest.text.blank?
-                      画像が投稿されています
-                    - else
-                      = latest.text
+                  = message_if(group)
