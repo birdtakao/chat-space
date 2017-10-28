@@ -4,38 +4,29 @@
     = yield
 
 .chat
-  .chat-side-bar
-    .chat-side-bar__header
-      .chat-side-bar__header__contents
-        .chat-side-bar__header__contents__name takao toriyama
-        %li.chat-side-bar__header__contents__new-group
-          = link_to new_group_path do
-            %i.fa.fa-pencil-square-o.icon
-        %li.chat-side-bar__header__contents__edit
-          = link_to edit_user_path(current_user) do
-            %i.fa.fa-cog.icon
-    .chat-side-bar__groups
-      .chat-side-bar__groups-lists
-        .chat-side-bar__group
-          .chat-side-bar__group-name
-            - current_user.groups.each do |group|
-              .chat-side-bar__group-name
-                = group.name
-
+  = render partial: "groups/side-bar"
   .chat-main
     .chat-main__header
       .chat-main__header__group.clearfix
-        .chat-main__header__group-name Test
+        .chat-main__header__group-name
+          =  @group.name
         .chat-main__header__group-edit
           = link_to 'Edit', edit_group_path(current_user)
       .chat-main__header__members
-        %li.member Member: Toriyama Takao
+        %li.member 
+          = "Member:"
+          - @group.memberships.each do |m|
+            #{m.user.name}
     .chat-main__body
       .chat-main__body__messages
-        .chat-main__body__messages__1
-          .chat-main__body__messages__1-name toriyama takao
-          .chat-main__body__messages__1-time 2017/09/05 20:52:52
-          .chat-main__body__messages__1-body hoge
+        - @group.messages.each do |message|
+          .chat-main__body__message
+            .chat-main__body__message__name
+              = current_user.name
+            .chat-main__body__message__time
+              = message.created_at
+            .chat-main__body__message__body
+              = message.text
     .chat-main__footer
       .chat-main__footer-form
       = form_for [@group, @message] do |f|

@@ -56,9 +56,9 @@ html{
         }
 
         &__groups{
-          height: 85%;
-          width: 100%;
+          height: calc(100vh - 100px);;
           background-color: #2f3e51;
+          padding: 0 20px;
 
           &-lists{
             height: 100%;
@@ -67,7 +67,14 @@ html{
         }
 
         &__group-name{
-          padding: 20px 0 40px;
+          color: rgb(255, 255, 255);
+          padding: 20px 0px 40px;
+        }
+
+        &__group-message{
+          color: #fff;
+          font-size: 11px;
+          margin-top: 5px;
         }
       }
 
@@ -112,37 +119,37 @@ html{
 
           &__messages{
             padding-top: 26px;
-            padding-left: 40px;
+            padding: 46px 40px 0;
+          }
 
-            &__1{
-              padding: 20px 0;
+        &__message{
+          margin-bottom: 40px;
 
-              &-name{
-                color: #434A54;
-                font-size: 16px;
-                font-weight: bold;
-                float: left;
-              }
+            &__name{
+              color: #434A54;
+              font-size: 16px;
+              font-weight: bold;
+              float: left;
+            }
 
-              &-time{
-                color: #999;
-                font-size: 12px;
-                padding: 0 10px 10px;
-                float: left;
-              }
+            &__time{
+              color: #999;
+              font-size: 12px;
+              padding: 0 10px 10px;
+              float: left;
+            }
 
-              &-body{
-                color: #434A54;
-                clear: both;
-              }
+            &__body{
+              color: #434A54;
+              clear: both;
+              padding: 10px 0px 0px;
             }
           }
         }
 
         &__footer{
-          height: 90px;
-          width: 100%;
           background-color: #B8C3C7;
+          padding: 0px 40px 20px 40px;
 
           &-form{
             margin: 0 40px;
