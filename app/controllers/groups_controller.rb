@@ -3,7 +3,6 @@ class GroupsController < ApplicationController
 
   def index
     @message = Message.new
-    @group = Group.find(1)
   end
 
   def new
