@@ -1,0 +1,27 @@
+.chat-side-bar
+  .chat-side-bar__header
+    .chat-side-bar__header__contents
+      .chat-side-bar__header__contents__name takao toriyama
+      %li.chat-side-bar__header__contents__new-group
+        = link_to new_group_path do
+          %i.fa.fa-pencil-square-o.icon
+      %li.chat-side-bar__header__contents__edit
+        = link_to edit_user_path(current_user) do
+          %i.fa.fa-cog.icon
+  .chat-side-bar__groups
+    .chat-side-bar__groups-lists
+      .chat-side-bar__group
+        .chat-side-bar__group-name
+          - current_user.groups.each do |group|
+            = link_to group_messages_path(group.id) do
+              .chat-side-bar__group-name
+                = group.name
+                .chat-side-bar__group-message
+                  - if group.messages.blank?
+                    まだメッセージはありません。
+                  - else
+                    - latest = group.messages.order("created_at DESC")[0]
+                    - if latest.text.blank?
+                      画像が投稿されています
+                    - else
+                      = latest.text
