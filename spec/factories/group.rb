@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :group do
      id         1
-     name      "テストグループ"
+     name      Faker::StarWars.planet
   end
 end
