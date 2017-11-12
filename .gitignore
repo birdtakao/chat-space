@@ -36,3 +36,5 @@ spec/tmp
 Gemfile.lock
 gemfiles/*.lock
 *.jpg
+
+*.png
