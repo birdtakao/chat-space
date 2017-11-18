@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :message do
-    text            Faker::Lorem.sentence
+    text            { Faker::Lorem.sentence }
     group       { create(:group) }
     user        { create(:user) }
     created_at { Faker::Time.between(2.days.ago, Time.now, :all) }
